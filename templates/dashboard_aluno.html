@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Dashboard Aluno</h1>
+<h2>Presenças</h2>
+{% if attendances %}
+  <table>
+    <thead>
+      <tr>
+        <th>Data</th>
+        <th>Disciplina</th>
+        <th>Professor</th>
+        <th>Presença</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for attendance in attendances %}
+        <tr>
+          <td>{{ attendance.date.strftime('%d/%m/%Y') }}</td>
+          <td>{{ attendance.name }}</td>
+          <td>{{ attendance.professor_name }}</td>
+          <td>{{ 'Presente' if attendance.present else 'Ausente' }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <p>Nenhuma presença encontrada.</p>
+{% endif %}
+{% endblock %}

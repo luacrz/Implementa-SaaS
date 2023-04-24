@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1 class="mb-3">Presença na aula de {{ class_data.date }}</h1>
+  {% if presence_data %}
+    <p>Você já registrou sua presença nesta aula.</p>
+  {% else %}
+    <form method="POST" action="{{ url_for('registrar_presenca') }}">
+      <input type="hidden" name="class_id" value="{{ class_data.id }}">
+      <input type="hidden" name="student_id" value="{{ session['user_id'] }}">
+      <button type="submit" class="btn btn-primary">Registrar presença</button>
+    </form>
+  {% endif %}
+{% endblock %}

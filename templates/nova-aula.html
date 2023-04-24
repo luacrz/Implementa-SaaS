@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Nova Aula</h1>
+  <form method="POST">
+    <div class="form-group">
+      <label for="date">Data:</label>
+      <input type="date" name="date" id="date" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Criar Aula</button>
+  </form>
+{% endblock %}
